@@ -54,9 +54,15 @@ def fit_sin(tt, yy, max_iter=10000, tol=1e-6, learning_rate=1e-6):
         "freq": f, "period": 1. / f, "fitfunc": fitfunc
     }
 
-# Parameters for the test data
-N, amp, omega, phase, offset, noise = 500, 1., 2., .5, 4., 3
+# User input for test data parameters
+N = int(input("Enter the number of samples (e.g., 500): "))
+amp = float(input("Enter the amplitude (e.g., 1.0): "))
+omega = float(input("Enter the angular frequency ω (e.g., 2.0): "))
+phase = float(input("Enter the phase (in radians, e.g., 0.5): "))
+offset = float(input("Enter the offset value (e.g., 4.0): "))
+noise = float(input("Enter the noise level (e.g., 3.0): "))
 
+# Generate the time sequence and noisy data
 tt = np.linspace(0, 10, N)
 tt2 = np.linspace(0, 10, 10 * N)
 yy = amp * np.sin(omega * tt + phase) + offset
@@ -65,16 +71,18 @@ yynoise = yy + noise * (np.random.random(len(tt)) - 0.5)
 # Perform the fitting
 res = fit_sin(tt, yynoise)
 
-# Print results
-print(f"Amplitude={res['amp']}, Angular freq.={res['omega']}, "
-      f"Phase={res['phase']}, Offset={res['offset']}")
+# Print the fitting results
+print(f"Amplitude = {res['amp']}, Angular frequency = {res['omega']}, "
+      f"Phase = {res['phase']}, Offset = {res['offset']}")
 
 # Plot the results
 plt.title("Least Squares Fit to a Sinusoidal Function")
-plt.plot(tt, yy, "-k", label="y", linewidth=2)
-plt.plot(tt, yynoise, "ok", label="y with noise")
-plt.plot(tt2, res["fitfunc"](tt2), "r-", label="y fit curve", linewidth=2)
+plt.plot(tt, yy, "-k", label="True function", linewidth=2)
+plt.plot(tt, yynoise, "ok", label="Noisy data")
+plt.plot(tt2, res["fitfunc"](tt2), "r-", label="Fitted curve", linewidth=2)
 plt.legend(loc="best")
+
+# Display the results on the plot
 info_text = (f"Amplitude = {res['amp']}\n"
              f"Angular Frequency = {res['omega']}\n"
              f"Phase = {res['phase']:.2f}\n"
@@ -82,4 +90,6 @@ info_text = (f"Amplitude = {res['amp']}\n"
 plt.text(0.05, 0.95, info_text, transform=plt.gca().transAxes,
          fontsize=10, verticalalignment='top',
          bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
+
+# Show the plot
 plt.show()
