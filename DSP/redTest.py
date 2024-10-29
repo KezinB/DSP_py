@@ -12,7 +12,7 @@ for r in range(R):
 matrix_array = np.array(matrix)
 print("The given matrix is:\n", matrix_array)
 
-# Loop to reduce the matrix to RREF5
+# Loop to reduce the matrix to RREF
 lead = 0
 for r in range(R):
     if lead >= C:
