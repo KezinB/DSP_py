@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 # NOISE GENERATION
 M = 25
-N = 500
+N = 1000
 Delay = 3
 lambda_ = 1
 
@@ -29,15 +29,20 @@ ep0 = np.ones(M) * epsilon
 ep1 = np.ones(M) * epsilon
 
 # Intermediate signals
+forward_apriori_error = []
+forward_aposteriori_error = []
+backward_apriori_error = []
+backward_aposteriori_error = []
 msd = []
-mmse = []
 
 # FILTERING ALGORITHM
 for i in range(1, len(fnoise)):
     # Forward A Priori Prediction Error
     ep0 = np.random.randn() * ep0 - w0
+    forward_apriori_error.append(ep0.copy())
     # Forward A Posteriori Prediction Error
     ep1 = ep0 / (gamma + 1)
+    forward_aposteriori_error.append(ep1.copy())
     # MWLS Forward Error
     epMWL = np.random.randn() * ep1
     # Forward Weight Update
@@ -47,8 +52,10 @@ for i in range(1, len(fnoise)):
     gamma1 = gamma / (1 + gamma)
     # Backward A Priori Prediction Error
     ep0 = np.random.randn() * ep1 + phi
+    backward_apriori_error.append(ep0.copy())
     # Backward A Posteriori Prediction Error
     ep1 = ep0 / (gamma + 1)
+    backward_aposteriori_error.append(ep1.copy())
     # MWLS Backward Error
     epMWL = np.random.randn() * ep1
     # Backward Weight Update
@@ -67,17 +74,15 @@ for i in range(1, len(fnoise)):
 
     # Calculate MSD
     msd.append(np.mean((w0 - w1) ** 2))
-    # Calculate MMSE
-    mmse.append(np.min((w0 - w1) ** 2))
 
 # Print the results
 print("Filtering completed successfully!")
 print("Final weights:", w0)
 
 # Plotting the results
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=(14, 10))
 
-plt.figure()
+plt.subplot(3, 1, 1)
 plt.plot(t, sine_wave, label='Original Sine Wave')
 plt.plot(t, noise, label='Noised Sine Wave', alpha=0.7)
 plt.xlabel('Sample Index')
@@ -85,31 +90,22 @@ plt.ylabel('Amplitude')
 plt.title('Input Sine Wave and Noised Sine Wave')
 plt.legend()
 plt.grid(True)
-plt.show()
 
-plt.figure()
+plt.subplot(3, 1, 2)
 plt.plot(fnoise, label='Filtered Noise')
 plt.xlabel('Sample Index')
 plt.ylabel('Amplitude')
 plt.title('Filtered Noise Signal')
 plt.legend()
 plt.grid(True)
-plt.show()
 
-plt.figure()
+plt.subplot(3, 1, 3)
 plt.plot(msd, label='Mean Squared Deviation (MSD)')
 plt.xlabel('Iteration')
 plt.ylabel('MSD')
 plt.title('Mean Squared Deviation over Iterations')
 plt.legend()
 plt.grid(True)
-plt.show()
 
-plt.figure()
-plt.plot(mmse, label='Minimum Mean Square Error (MMSE)')
-plt.xlabel('Iteration')
-plt.ylabel('MMSE')
-plt.title('Minimum Mean Square Error over Iterations')
-plt.legend()
-plt.grid(True)
+plt.tight_layout()
 plt.show()

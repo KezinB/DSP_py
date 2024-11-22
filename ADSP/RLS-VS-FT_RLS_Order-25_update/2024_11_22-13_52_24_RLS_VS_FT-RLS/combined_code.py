@@ -60,8 +60,9 @@ x = np.sin(2 * np.pi * 5 * t) + np.random.normal(0, 0.5, N)
 d = np.sin(2 * np.pi * 5 * t)
 
 order = 25
-lambda_factor = 0.99
+lambda_factor = 0.9
 delta = 1e-2
+#delta = 0.01
 
 # Measure time for RLS
 start_time_rls = datetime.now()
@@ -76,7 +77,7 @@ end_time_ftrls = datetime.now()
 duration_ftrls = (end_time_ftrls - start_time_ftrls).total_seconds()
 
 # Create folder with date and time separated by an underscore and a dash
-folder_path = "C:\\Users\\HP\\OneDrive\\Documents\\Codes\\python\\ADSP\\RLS-VS-FT_RLS_Order-25"
+folder_path = "C:\\Users\\HP\\OneDrive\\Documents\\Codes\\python\\ADSP\\RLS-VS-FT_RLS_Order-25_update"
 now = datetime.now()
 folder_name = now.strftime("%Y_%m_%d-%H_%M_%S_RLS_VS_FT-RLS")
 full_folder_path = os.path.join(folder_path, folder_name)
