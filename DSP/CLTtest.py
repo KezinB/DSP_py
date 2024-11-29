@@ -4,8 +4,8 @@ import math
 
 original_distribution = random.uniform
 original_params = (0, 1)
-sample_size = 30
-num_samples = 1000
+sample_size = 5
+num_samples = 10000
 samples = [[original_distribution(*original_params) for _ in range(sample_size)]
            
 for _ in range(num_samples)]
