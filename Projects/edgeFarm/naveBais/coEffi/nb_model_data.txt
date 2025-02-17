@@ -1,0 +1,13 @@
+Naive Bayes Model Parameters:
+
+Means:
+Class 0 means: [84.21428571 32.71428571 36.28571429]
+Class 1 means: [40.97222222 25.94444444 60.77777778]
+
+Variances:
+Class 0 variances: [46.16836794  4.48979651 43.2755108 ]
+Class 1 variances: [196.58256232   5.21913639  34.89506232]
+
+Priors:
+Class 0 prior: 0.4375
+Class 1 prior: 0.5625
