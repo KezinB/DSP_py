@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "../Accubits"
+    }
+  ],
+  "settings": {
+    "cSpell.words": ["randn"]
+  }
+}

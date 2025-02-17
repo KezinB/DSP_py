@@ -1,0 +1,4 @@
+Temperature model coefficients: [0.306372   0.18688998]
+Temperature model intercept: 10.720790635208743
+Humidity model coefficients: [-1.21860443 -0.87958256]
+Humidity model intercept: 130.8158419720861
