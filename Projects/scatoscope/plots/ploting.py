@@ -2,8 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load the CSV file into a DataFrame
-df = pd.read_csv(r'C:\Users\kezin\OneDrive\Documents\Codes\python\Projects\scatoscope\datas\logs\ScatoscopeData_2025-02-17_18-46-12.csv')
-
+df = pd.read_csv(r'C:\Users\kezin\OneDrive\Documents\Codes\python\Projects\scatoscope\datas\logs\ScatoscopeData_2025-02-18_20-08-11.csv')
 # Plotting the Accelerometer data
 plt.figure(figsize=(10, 5))
 plt.subplot(2, 1, 1)  # 2 rows, 1 column, first subplot
