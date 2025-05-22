@@ -1,0 +1,7 @@
+ecg_realtime 1 9.601
+ecg_realtime.dat 16 1000/mV 16 0 0 0 I
+# Created: Sun Mar 30 15:30:05 2025
+# ADC Resolution: 16 bits
+# Voltage Range: ±5.0V
+# Sample Rate: 1000 Hz
+# Lead Configuration: Lead II

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<workbench_signals>
+    <signal index="0">
+        <name>ECG</name>
+        <file>20250330_153531.dat</file>
+        <format>16</format>
+        <sampling_rate>1000</sampling_rate>
+    </signal>
+</workbench_signals>

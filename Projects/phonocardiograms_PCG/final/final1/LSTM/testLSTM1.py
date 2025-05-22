@@ -7,7 +7,8 @@ import matplotlib.pyplot as plt
 model_save_path = r"C:\Users\kezin\Downloads\dataset\model\lstm_model.h5"
 
 # Path to the test audio file
-test_signal_path = r"C:\Users\kezin\OneDrive\Documents\Codes\python\Projects\phonocardiograms_PCG\paperBased\audio\recovered_pcg1.wav"
+# test_signal_path = r"C:\Users\kezin\OneDrive\Documents\Codes\python\Projects\phonocardiograms_PCG\paperBased\audio\recovered_pcg3.wav"
+test_signal_path = r"C:\Users\kezin\OneDrive\Documents\Codes\python\Projects\phonocardiograms_PCG\paperBased\audio\recovered_pcg3.wav"
 
 # Function to extract Mel spectrogram from audio
 def extract_mel_spectrogram(audio_path, sr=16000, n_mels=128, fixed_length=100):
