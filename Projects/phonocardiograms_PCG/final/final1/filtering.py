@@ -11,7 +11,8 @@ rate, maternal_pcg = wav.read(r"C:\Users\kezin\Downloads\dataset\maternal\m64.wa
 maternal_pcg = maternal_pcg / np.max(np.abs(maternal_pcg))  # Scale between -1 and 1
 
 # Step 2: Add White Gaussian Noise (WGN)
-wgn = np.random.normal(0, 0.05, maternal_pcg.shape)  # 0.05 is noise variance, adjust as needed
+# wgn = np.random.normal(0, 0.05, maternal_pcg.shape)  # 0.05 is noise variance, adjust as needed
+wgn = np.random.normal(0, 0.01, maternal_pcg.shape)  # 0.05 is noise variance, adjust as needed
 noisy_pcg = maternal_pcg + wgn
 
 # Step 3: Apply Savitzky-Golay Filter for Denoising
@@ -66,5 +67,5 @@ plt.tight_layout()
 plt.show()
 
 # Step 6: Save the recovered signal as a WAV file
-wav.write(r"C:\Users\kezin\OneDrive\Documents\Codes\python\Projects\phonocardiograms_PCG\paperBased\audio\recovered_pcg1.wav", rate, np.int16(recovered_pcg * 32767))
+wav.write(r"C:\Users\kezin\OneDrive\Documents\Codes\python\Projects\phonocardiograms_PCG\paperBased\audio\recovered_pcg3.wav", rate, np.int16(recovered_pcg * 32767))
 print("Recovered PCG signal saved as recovered_pcg1.wav")   
